@@ -1,5 +1,7 @@
 # Results
 
+Writes text with a random color
+
 ## Google Chrome
 *Version 48.0.2564.97 (64-bit)*
 
