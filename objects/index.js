@@ -7,18 +7,16 @@ var render = function () {
     for (var i=0; i < numberOfPoints; i++)
     {
         circle = paper.circle(
-            Math.floor((Math.random()*500)),
-            Math.floor((Math.random()*500)),
+            Math.floor((Math.random()*800)),
+            Math.floor((Math.random()*800)),
             2
         );
         circle.attr("fill", "#f00");
         circle.attr("stroke", "#fff");
     }
 };
-render();
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
-    console.log("Operations per second " + this.hz);
-    console.log("Mean " + this.stats.mean)
+    $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
   })
   .run();
