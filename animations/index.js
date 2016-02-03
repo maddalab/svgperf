@@ -1,8 +1,9 @@
-var numberOfGroups = 10000;
+var numberOfGroups = 1000;
 var paper = Snap(1600, 1600);
 
 var render = function () {
     paper.clear();
+    var allGroups = [];
     for (var i=0; i < numberOfGroups; i++)
     {
       var x = Math.floor((Math.random()*800));
@@ -10,8 +11,11 @@ var render = function () {
       var r = paper.rect(x, y,100,100,20,20).attr({ stroke: '#123456', 'strokeWidth': 20, fill: 'red' });
       var c = paper.circle(x+100,y+100,50).attr({ stroke: '#123456', 'strokeWidth': 20, fill: 'blue' });
       var g = paper.group(r,c);
-      g.animate({ transform: 'r360,150,150' }, 1000, mina.bounce );
+      allGroups.push(g);
     }
+    allGroups.forEach(function (g) {
+      g.animate({ transform: 'r360,150,150' }, 1000, mina.bounce );
+    });
 };
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
