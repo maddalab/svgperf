@@ -1,4 +1,4 @@
-var numberOfStrings = 1000; // adjust this to produce more/less points
+var numberOfStrings = 100000; // adjust this to produce more/less points
 var paper = Snap(800, 800);
 var items = ["Saab", "Volvo", "BMW", "Honda", "Toyota", "Ford", "Volkswagen" , "Chrysler"];
 var colors = ["#fffafa", "#6a5acd", "#48d1cc", "#f5f5dc", "#db7093", "#9370db", "#ff6347" , "#1e90ff"];
