@@ -1,7 +1,4 @@
-var squareSide = 1;
-var paperSide = 800;
-var imgSide = paperSide / squareSide;
-var paper = Snap(paperSide, paperSide);
+var paper = Snap(800, 800);
 
 // load images at 200x200, gives us 16 images
 
@@ -15,16 +12,13 @@ var render = function () {
     paper.filter(Snap.filter.sepia(0.5)),
     paper.filter(Snap.filter.saturate(0.5))
   ];
-  for (var i = 0; i < paperSide / imgSide; i++) {
-    for (var j = 0; j < paperSide / imgSide; j++) {
-      var f = filters[Math.floor(Math.random() * filters.length)];
-      var image = paper.image("birds.svg", i * imgSide, j * imgSide, imgSide, imgSide).attr({
-        filter: f
-      });
-    }
-  }
+  var f = filters[Math.floor(Math.random() * filters.length)];
+  var image = paper.image("backgrounds.jpg", 0, 0, 800, 800).attr({
+    filter: f
+  });
 };
 
+//render();
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
     $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
