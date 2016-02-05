@@ -15,8 +15,10 @@ var render = function () {
         circle.attr("stroke", "#fff");
     }
 };
+
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
-    $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
+    $("#results").html("<b>Benchmark results </b> <br/> Total time " + this.times.elapsed + "  <br> Number of cycles  "
+    + this.stats.sample.length + " <br> Average time per cycle " + this.times.elapsed / this.stats.sample.length);
   })
-  .run();
+  .run({ 'async': true });

@@ -1,4 +1,4 @@
-var numberOfStrings = 50000;
+var numberOfStrings = 1000;
 var paper = Snap(800, 800);
 var items = ["Saab", "Volvo", "BMW", "Honda", "Toyota", "Ford", "Volkswagen" , "Chrysler"];
 var colors = ["#fffafa", "#6a5acd", "#48d1cc", "#f5f5dc", "#db7093", "#9370db", "#ff6347" , "#1e90ff"];
@@ -17,8 +17,10 @@ var render = function () {
         text.attr('fill', color);
     }
 };
+
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
-    $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
+    $("#results").html("<b>Benchmark results </b> <br/> Total time " + this.times.elapsed + "  <br> Number of cycles  "
+    + this.stats.sample.length + " <br> Average time per cycle " + this.times.elapsed / this.stats.sample.length);
   })
-  .run();
+  .run({ 'async': true });

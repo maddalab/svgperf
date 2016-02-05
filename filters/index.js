@@ -1,4 +1,4 @@
-var squareSide = 1;
+var squareSide = 20;
 var paperSide = 800;
 var imgSide = paperSide / squareSide;
 var paper = Snap(paperSide, paperSide);
@@ -27,6 +27,7 @@ var render = function () {
 
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
-    $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
+    $("#results").html("<b>Benchmark results </b> <br/> Total time " + this.times.elapsed + "  <br> Number of cycles  "
+    + this.stats.sample.length + " <br> Average time per cycle " + this.times.elapsed / this.stats.sample.length);
   })
   .run({ 'async': true });

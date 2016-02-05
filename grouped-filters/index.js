@@ -18,7 +18,6 @@ var foreground = paper.image("backgrounds.jpg", 0, 0, 1200, 1200).attr({
 var imgGroup = paper.g(background, foreground)
 
 var render = function () {
-  console.log("invoked");
   var newx = Math.floor(Math.random() * 200);
   foreground.attr({
     x: newx
@@ -28,9 +27,9 @@ var render = function () {
   });
 };
 
-//render();
 var bench = new Benchmark("objects", render)
   .on('complete', function () {
-    $("#results").html("<b>Operations per second</b> " + this.hz + "<br/><b>Mean</b> " + this.stats.mean);
+    $("#results").html("<b>Benchmark results </b> <br/> Total time " + this.times.elapsed + "  <br> Number of cycles  "
+    + this.stats.sample.length + " <br> Average time per cycle " + this.times.elapsed / this.stats.sample.length);
   })
   .run({ 'async': true });
