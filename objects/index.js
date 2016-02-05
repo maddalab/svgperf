@@ -1,4 +1,4 @@
-var numberOfPoints = 1000; // adjust this to produce more/less points
+var numberOfPoints = 100000;
 var paper = Snap(800, 800);
 
 var render = function () {
